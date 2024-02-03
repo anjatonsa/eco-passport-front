@@ -1,1 +1,19 @@
-<p>nav works!</p>
+<mat-toolbar>
+    <span class="headline">EcoPassport</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" color="primary" (click)="myPassports()">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" color="primary" (click)="searchPassports()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" color="primary" (click)="cityStatistics()">
+      <mat-icon>not_listed_location</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" color="primary" (click)="goToProfile()">
+      <mat-icon>account_box</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" color="primary" (click)="signOut()">
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
+  </mat-toolbar>

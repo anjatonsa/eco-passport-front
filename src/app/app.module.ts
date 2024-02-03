@@ -17,6 +17,12 @@ import { PassportViewComponent } from './passport-view/passport-view.component';
 import { CityStatisticsComponent } from './city-statistics/city-statistics.component';
 import { AppState } from './app.state';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StoreModule.forRoot<AppState>({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
