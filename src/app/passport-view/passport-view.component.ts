@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./passport-view.component.scss']
 })
 export class PassportViewComponent {
+  constructor() { }
+
+  getObjectKeys(obj: any): string[] {
+    return Object.keys(obj);
+  }
+  deletePost() {
+    // throw new Error('Method not implemented.');
+  }
 
 }

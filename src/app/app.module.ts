@@ -23,6 +23,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +56,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
+    MatListModule,
+    MatMenuModule,
+    MatCardModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
