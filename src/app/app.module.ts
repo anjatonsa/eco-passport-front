@@ -27,6 +27,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { UserEffects } from './store/user.effects';
+import { authReducer } from './store/user.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -45,8 +48,8 @@ import { MatDividerModule } from '@angular/material/divider';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot<AppState>({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot<AppState>({auth:authReducer}, {}),
+    EffectsModule.forRoot([UserEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule,
     FormsModule,
@@ -60,6 +63,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatMenuModule,
     MatCardModule,
     MatDividerModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
