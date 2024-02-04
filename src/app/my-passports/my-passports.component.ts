@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Passport } from '../entities/passport';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
 
 @Component({
   selector: 'app-my-passports',
@@ -7,4 +10,15 @@ import { Component } from '@angular/core';
 })
 export class MyPassportsComponent {
 
+  myPassports:Passport[]=[];
+
+  constructor(private store:Store<AppState>) { }
+
+  ngOnInit(): void {
+    /*this.store.select(selectMyPassports).subscribe((myPassports)=>{
+      this.myPassports=myPassports;
+    });
+    this.store.dispatch(loadMyPassports());*/
+
+  }
 }

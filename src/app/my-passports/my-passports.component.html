@@ -1,1 +1,17 @@
 <app-nav></app-nav>
+<div>
+    <hr class="line">
+    <h1 class="headline">My Passports</h1>
+    <hr class="line">
+    
+    <div *ngIf="myPassports.length === 0">
+        <h2 class="headline">You have not made any passports yet.</h2>
+    </div>
+    <div  class="my-passports">
+        
+        <div *ngFor="let myPassports of myPassports">
+          <!-- <app-display-post [passport]="myPassports"></app-display-post> -->
+        </div>
+    </div>
+   
+</div>
