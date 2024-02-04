@@ -69,7 +69,7 @@ export class PassportEffects {
         return this.actions$.pipe(
             ofType(updatePassport),
             switchMap((action) => {
-                return this.passportService.updatePassport(action.passport,action._id).pipe(
+                return this.passportService.updatePassport(action.passport, action._id).pipe(
                     map((draft) => {
                         this.router.navigateByUrl("/my-passports");
                         return loadMyPassports();

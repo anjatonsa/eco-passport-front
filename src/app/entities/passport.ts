@@ -19,6 +19,9 @@ export class Passport{
     totalFloors: number;
     CO2Emission: number;
 
+    [key: string]: string | number | User | string[]; // Index signature to allow any string key with specific value types
+
+
     constructor(
         _id: string,
         buildingCategory: string,
@@ -37,6 +40,7 @@ export class Passport{
         coolingType: string,
         totalFloors: number,
         CO2Emission: number
+        
     ){
         this._id = _id;
         this.buildingCategory = buildingCategory;

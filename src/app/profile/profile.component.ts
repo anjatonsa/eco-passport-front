@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { createAvatar } from '@dicebear/avatars';
+import { selectUserData } from '../store/user.selector';
+import { deleteUser } from '../store/user.actions';
 
 @Component({
   selector: 'app-profile',
@@ -31,10 +33,10 @@ export class ProfileComponent implements OnInit, OnDestroy{
   ) { }
 
   ngOnInit(): void {
-    // this.store.select(selectUserData).subscribe((data) => {
-    //   this.profileToDisplay = data;
-    // });
-    this.profileToDisplay = {name: "John Doe", email: "minaaa", password:"passw", phoneNumber:"123456",surname:"prezime"}
+    this.store.select(selectUserData).subscribe((data) => {
+      this.profileToDisplay = data;
+    });
+    // this.profileToDisplay = {name: "John Doe", email: "minaaa", password:"passw", phoneNumber:"123456",surname:"prezime"}
   }
   ngOnDestroy(): void {
   }
@@ -44,7 +46,7 @@ export class ProfileComponent implements OnInit, OnDestroy{
   
 
   deleteProfile() {
-  //  this.store.dispatch(deleteUser({ email: this.profileToDisplay.email }));
+   this.store.dispatch(deleteUser({ email: this.profileToDisplay.email }));
    this.router.navigateByUrl('/sign-in');
   }
 

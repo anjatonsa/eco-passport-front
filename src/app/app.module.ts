@@ -30,6 +30,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { UserEffects } from './store/user.effects';
 import { authReducer } from './store/user.reducer';
 import { HttpClientModule } from '@angular/common/http';
+import { myPassportsReducer, searchedPassportsReducer } from './store/passport.reducer';
+import { PassportEffects } from './store/passport.effects';
 
 
 @NgModule({
@@ -48,8 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot<AppState>({auth:authReducer}, {}),
-    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot<AppState>({auth:authReducer, myPassports:myPassportsReducer, searchedPassports:searchedPassportsReducer}, {}),
+    EffectsModule.forRoot([UserEffects,PassportEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule,
     FormsModule,

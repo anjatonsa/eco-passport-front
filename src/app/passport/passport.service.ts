@@ -49,7 +49,7 @@ export class PassportService {
     return this.http.post(url + `/passport?userEmail=${this.userEmail}`, { passportDto: passport }, { observe: 'response' });
   }
 
-  deletePassport(_id: number): Observable<HttpResponse<any>> {
+  deletePassport(_id: string): Observable<HttpResponse<any>> {
     return this.http.delete(url + `/passport/${_id}`, { observe: 'response' });
   }
 

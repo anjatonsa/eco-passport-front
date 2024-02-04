@@ -28,7 +28,7 @@ export const createPassport = createAction(
 
 export const deletePassport = createAction(
     '[Passports] Delete Passport',
-    props<{ _id: number }>()
+    props<{ _id: string }>()
 );
 
 export const deletePassportSuccess = createAction(
