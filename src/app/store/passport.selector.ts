@@ -9,7 +9,7 @@ export const selectSearchedPassportsFeature=createSelector(
 
 export const selectSearchedPassports=createSelector(
     selectSearchedPassportsFeature,
-    (state) => state.ids.map(_id => state.entities[_id])
+    (state) => state.ids.map(id => state.entities[id])
     .filter(passport => passport !== undefined)
     .map(passport => <Passport>passport)
 );
@@ -21,7 +21,7 @@ export const selectMyPassportsFeature=createSelector(
 
 export const selectMyPassports=createSelector(
     selectMyPassportsFeature,
-    (state) => state.ids.map(_id => state.entities[_id])
+    (state) => state.ids.map(id => state.entities[id])
     .filter(passport => passport !== undefined)
     .map(passport => <Passport>passport)
 );

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { Router } from '@angular/router';
+import { login } from '../store/user.actions';
 
 @Component({
   selector: 'app-sign-in',
@@ -23,7 +24,7 @@ export class SignInComponent implements OnInit, OnDestroy{
   }
 
   onSignIn(): void {
-    // this.store.dispatch(login({email:this.email, password:this.password}));
+    this.store.dispatch(login({email:this.email, password:this.password}));
   }
 
   onSignUp(): void {

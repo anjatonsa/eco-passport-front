@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Passport } from '../entities/passport';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
+import { selectMyPassports } from '../store/passport.selector';
+import { loadMyPassports } from '../store/passport.actions';
 
 @Component({
   selector: 'app-my-passports',
@@ -15,10 +17,10 @@ export class MyPassportsComponent {
   constructor(private store:Store<AppState>) { }
 
   ngOnInit(): void {
-    /*this.store.select(selectMyPassports).subscribe((myPassports)=>{
+    this.store.select(selectMyPassports).subscribe((myPassports)=>{
       this.myPassports=myPassports;
     });
-    this.store.dispatch(loadMyPassports());*/
+    this.store.dispatch(loadMyPassports());
 
   }
 }
