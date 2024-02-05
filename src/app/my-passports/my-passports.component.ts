@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { selectMyPassports } from '../store/passport.selector';
 import { loadMyPassports } from '../store/passport.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-passports',
@@ -14,7 +15,7 @@ export class MyPassportsComponent {
 
   myPassports:Passport[]=[];
 
-  constructor(private store:Store<AppState>) { }
+  constructor(private router:Router,private store:Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.select(selectMyPassports).subscribe((myPassports)=>{
@@ -22,5 +23,8 @@ export class MyPassportsComponent {
     });
     this.store.dispatch(loadMyPassports());
 
+  }
+  addPassport(){
+    this.router.navigate(['/add-and-edit-passport']);
   }
 }

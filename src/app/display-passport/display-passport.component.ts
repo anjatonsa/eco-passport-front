@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Passport } from '../entities/passport';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
+import { AuthState } from '../store/user.reducer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display-passport',
@@ -12,14 +14,25 @@ export class DisplayPassportComponent {
 
   @Input() passport:Passport|null=null;
   energySourcesString:string="";
+  isMine:boolean=false;
 
-  constructor( private store: Store<AppState>) { }
+
+  constructor(private router:Router, private store: Store<AppState>) { }
 
   ngOnInit(): void {
 
     if(this.passport){
       this.energySourcesString=this.makeEnergySourcesString();
     }
+
+    this.store.select((state)=>state.auth).subscribe((authState:AuthState)=>{
+      if(authState.user){
+
+        if(this.passport?.owner._id ===authState.user._id){
+          this.isMine=true;
+        }
+      }
+    });
   }
 
   makeEnergySourcesString():string{
@@ -33,5 +46,13 @@ export class DisplayPassportComponent {
       }
     }
     return energySourcesString;
+  }
+
+  editPassport(){
+    this.router.navigate(['/add-and-edit-passport']);
+  }
+
+  deletePassport(){
+
   }
 }

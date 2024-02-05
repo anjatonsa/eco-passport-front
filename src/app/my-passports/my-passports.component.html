@@ -1,7 +1,10 @@
 <app-nav></app-nav>
 <div>
     <hr class="line">
-    <h1 class="headline">My Passports</h1>
+    <div class="header">
+        <h1 class="headline">My Passports</h1>
+        <button mat-raised-button color="primary" (click)="addPassport()" >Add new passport</button>
+    </div>
     <hr class="line">
     
     <div *ngIf="myPassports.length === 0">

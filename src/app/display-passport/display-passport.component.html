@@ -3,8 +3,7 @@
       <mat-card-title class="mat-card-title">{{ passport?.address +", "+ passport?.city }}</mat-card-title>
       
     </mat-card-header>
-    <mat-card-actions>
-    </mat-card-actions>
+
     <mat-card-content class="mat-card-content">
 
       <p>
@@ -61,4 +60,15 @@
   
     </mat-card-content>
   
+    <mat-card-actions>
+      <div *ngIf="isMine" class="controls">
+        <button mat-raised-button color="primary" (click)="editPassport()">
+          Edit
+        </button>
+        <button mat-raised-button color="primary" (click)="deletePassport()">
+          Delete
+        </button>
+      </div>
+    </mat-card-actions>
+
   </mat-card>

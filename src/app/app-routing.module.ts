@@ -7,6 +7,7 @@ import { CityStatisticsComponent } from './city-statistics/city-statistics.compo
 import { PassportEditorComponent } from './passport-editor/passport-editor.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { AddAndEditPassportComponent } from './add-and-edit-passport/add-and-edit-passport.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,9 @@ const routes: Routes = [
   },
   {
     path:'search', component: SearchPageComponent, pathMatch: 'full'
+  },
+  {
+    path:'add-and-edit-passport',component:AddAndEditPassportComponent, pathMatch:'full'
   },
   {
     path:'**', redirectTo: 'sign-in', pathMatch: 'full'
