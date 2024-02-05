@@ -33,6 +33,7 @@ import { authReducer } from './store/user.reducer';
 import { HttpClientModule } from '@angular/common/http';
 import { myPassportsReducer, searchedPassportsReducer } from './store/passport.reducer';
 import { PassportEffects } from './store/passport.effects';
+import { DisplayPassportComponent } from './display-passport/display-passport.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { PassportEffects } from './store/passport.effects';
     SearchPageComponent,
     PassportEditorComponent,
     PassportViewComponent,
-    CityStatisticsComponent
+    CityStatisticsComponent,
+    DisplayPassportComponent
   ],
   imports: [
     BrowserModule,

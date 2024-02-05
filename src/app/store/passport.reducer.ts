@@ -11,8 +11,12 @@ export interface SearchPassportsState extends EntityState<Passport> {
 }
 
 
-const adapterMyPassports = createEntityAdapter<Passport>();
-const adapterSearchedPassports = createEntityAdapter<Passport>();
+const adapterMyPassports = createEntityAdapter<Passport>({
+    selectId: passport => passport._id, 
+  });
+const adapterSearchedPassports = createEntityAdapter<Passport>({
+    selectId: passport => passport._id, 
+  });
 
 export const initialMyPassportsState: MyPassportsState = adapterMyPassports.getInitialState();
 export const initialSearchedPAssportsState: SearchPassportsState = adapterSearchedPassports.getInitialState();

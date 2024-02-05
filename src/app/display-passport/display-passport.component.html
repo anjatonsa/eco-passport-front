@@ -1,0 +1,64 @@
+<mat-card class="example-card">
+    <mat-card-header class="mat-card-header">
+      <mat-card-title class="mat-card-title">{{ passport?.address +", "+ passport?.city }}</mat-card-title>
+      
+    </mat-card-header>
+    <mat-card-actions>
+    </mat-card-actions>
+    <mat-card-content class="mat-card-content">
+
+      <p>
+            {{ passport?.energyClass }}
+      </p>
+      
+      <p>
+        {{passport?.description}}
+      </p>
+
+      <p>
+        {{passport?.buildingCategory}}
+      </p>
+
+      <p>
+        {{passport?.constructionYear}}
+      </p>
+
+      <p>
+        {{passport?.area}}
+      </p>
+
+      <p>
+        {{passport?.annualHeatingNeed}}
+      </p>
+
+      <p>
+        {{passport?.heatingType}}
+      </p>
+
+      <p>
+        {{energySourcesString}}
+      </p>
+
+      <p>
+        {{passport?.ventilation}}
+      </p>
+  
+      <p>
+        {{passport?.hotWater}}
+      </p>
+  
+      <p>
+        {{passport?.coolingType}}
+      </p>
+  
+      <p>
+        {{passport?.totalFloors}}
+      </p>
+  
+      <p>
+        {{passport?.CO2Emission}}
+      </p>
+  
+    </mat-card-content>
+  
+  </mat-card>

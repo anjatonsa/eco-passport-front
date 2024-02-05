@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { Router } from '@angular/router';
 import { UserDto } from '../dtos/user.dto';
+import { signUp } from '../store/user.actions';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,6 +22,6 @@ export class SignUpComponent {
   }
 
   onSignUp(): void {
-    // this.store.dispatch(signUp({user:this.user}));
+     this.store.dispatch(signUp({user:this.user}));
   }
 }
