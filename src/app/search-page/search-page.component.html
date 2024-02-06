@@ -117,8 +117,8 @@
 
 
     <div class="passports">
-        <div *ngFor="let searchedPassports of searchedPassports">
-           <!-- <app-display-post [passports]="searchedPassports"></app-display-post> -->
+        <div *ngFor="let searchedPassport of searchedPassports">
+           <app-display-passport [passport]="searchedPassport"></app-display-passport>
         </div>
     </div>
     <div *ngIf="searchedPassports.length === 0">

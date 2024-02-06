@@ -36,7 +36,6 @@ export class PassportService {
       this.userEmail = email;
     });
     return this.http.get(url + '/passport/search', {params: new HttpParams({ fromObject: search as any }),  observe: 'response' });
-
   }
 
   createPassport(passport: PassportDto): Observable<HttpResponse<any>> {

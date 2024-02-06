@@ -5,6 +5,9 @@ import { AppState } from '../app.state';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Search } from '../entities/search';
 import {buildingCategories,energyClasses,heatingTypes,energySources,ventilationOptions,hotWaterOptions,coolingTypes} from '../env.vars';
+import { selectSearchedPassports } from '../store/passport.selector';
+import { loadSearchedPassports } from '../store/passport.actions';
+import { PassportDto } from '../dtos/passport.dto';
 
 @Component({
   selector: 'app-search-page',
@@ -23,23 +26,7 @@ export class SearchPageComponent {
   coolingTypes = coolingTypes;
 
   
-  searchParams:Search = {
-    buildingCategory: '',
-    address: '',
-    city: '',
-    constructionYear: '',
-    area: 0,
-    energyClass: '',
-    annualHeatingNeed: 0,
-    description: '',
-    heatingType: '',
-    energySources: [],
-    ventilation: '',
-    hotWater: '',
-    coolingType: '',
-    totalFloors: 0,
-    CO2Emission: 0
-  };
+  searchParams:PassportDto = new PassportDto("","","","",0,"",0,"","",[],"","","",0,0);
   searchForm: FormGroup;
 
   constructor(private store:Store<AppState>,private formBuilder: FormBuilder) { 
@@ -57,16 +44,27 @@ export class SearchPageComponent {
   }
 
   ngOnInit(): void {
-    /*this.store.select(selectSearchedPassports).subscribe((searchedPassports)=>{
+    this.store.select(selectSearchedPassports).subscribe((searchedPassports)=>{
       this.searchedPassports=searchedPassports;
-    });*/
+    });
 
   }
   
   search(){
    this.searchParams = { ...this.searchParams, ...this.searchForm.value };
    console.log(this.searchParams);
-   // this.store.dispatch(loadSearchedPassports({search:this.tag}));
-
+   this.store.dispatch(loadSearchedPassports({search:this.searchParams}));
+   this.searchParams=new PassportDto("","","","",0,"",0,"","",[],"","","",0,0);
+   if (this.searchForm) {
+    this.searchForm.get('buildingCategory')?.setValue('');
+    this.searchForm.get('heatingType')?.setValue('');
+    this.searchForm.get('energySource')?.setValue('');
+    this.searchForm.get('ventilationOption')?.setValue('');
+    this.searchForm.get('hotWaterOption')?.setValue('');
+    this.searchForm.get('coolingType')?.setValue('');
+    this.searchForm.get('energyClass')?.setValue('');
   }
+  }
+
+  
 }
