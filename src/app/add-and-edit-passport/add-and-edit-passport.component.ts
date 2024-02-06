@@ -145,7 +145,7 @@ export class AddAndEditPassportComponent {
       this.altcritFormGroup3.value.hotWater,this.altcritFormGroup3.value.coolingType, this.altcritFormGroup2.value.totalFloors,this.altcritFormGroup3.value.CO2Emission
       );
     
-    if(this.passportEdit === null)
+    if(this.passportEdit !== undefined)
     {
       this.store.dispatch(createPassport({passport:this.passportNew}));
     }
