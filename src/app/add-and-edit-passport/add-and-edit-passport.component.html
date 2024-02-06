@@ -1,1 +1,179 @@
-<p>add-and-edit-passport works!</p>
+<app-nav></app-nav>
+<div class="control-buttons">
+  <button mat-raised-button color="primary" class="btn-ctrl" style="float: right" type="button" 
+    (click)="discardPassport()"   >
+    Discard 
+  </button>
+</div>
+<div class="container">
+  <div class="main-div">
+    <mat-stepper orientation="vertical" [linear]="true" #stepper>
+      
+      <mat-step [stepControl]="altcritFormGroup">
+        <ng-template matStepLabel>Passport info</ng-template>
+        <form [formGroup]="altcritFormGroup">
+
+          <mat-form-field appearance="fill" class="field">
+            <input matInput formControlName="address" placeholder="Address" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="field ">
+            <input matInput formControlName="city" placeholder="City"/>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="field scrollable">
+            <textarea matInput formControlName="description" placeholder="Description"></textarea>
+          </mat-form-field>
+
+          <div>
+            <button mat-button color="primary" style="float: right" type="button" matStepperNext>
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+   
+      <mat-step [stepControl]="altcritFormGroup2">
+        <ng-template matStepLabel>Add general information about the building</ng-template>
+        <form [formGroup]="altcritFormGroup2">
+        <mat-form-field class="field">
+            <mat-label>Building category</mat-label>
+            <mat-select formControlName="buildingCategory">
+              <mat-option *ngFor="let category of buildingCategories" [value]="category">
+                {{ category }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field appearance="fill" class="field">
+            <mat-label>Construction year</mat-label>
+            <input matInput type="number" formControlName="constructionYear" placeholder="Construction year" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="field" color="primary">
+            <mat-label>Total floors</mat-label>
+            <input matInput  type="number"  formControlName="totalFloors" placeholder="Total floors" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="field" color="primary">
+            <mat-label>Area</mat-label>
+            <input matInput type="number" formControlName="area" placeholder="Area" />
+        </mat-form-field>
+
+
+        <div>
+          <button mat-button color="basic" style="float: right" type="button" matStepperNext>
+            Next
+          </button>
+          <button mat-button color="basic" style="float: left" type="button" matStepperPrevious>
+            Back
+          </button>
+        </div>
+        </form>
+      </mat-step>
+
+
+      
+      <mat-step [stepControl]="altcritFormGroup3">
+        <ng-template matStepLabel>Add information about energy consumption</ng-template>
+        <form [formGroup]="altcritFormGroup3"> 
+        <mat-form-field class="field">
+            <mat-label>Heating type</mat-label>
+            <mat-select formControlName="heatingType">
+              <mat-option *ngFor="let type of heatingTypes" [value]="type">
+                {{ type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field class="field">
+            <mat-label>Energy sources</mat-label>
+            <mat-select formControlName="energySources" multiple>
+              <mat-option *ngFor="let source of energySources" [value]="source">
+                {{ source }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field class="field">
+            <mat-label>Ventilation option</mat-label>
+            <mat-select formControlName="ventilationOption">
+              <mat-option *ngFor="let option of ventilationOptions" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field class="field">
+            <mat-label>Hot water option</mat-label>
+            <mat-select formControlName="hotWaterOption">
+              <mat-option *ngFor="let option of hotWaterOptions" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field class="field">
+            <mat-label>Cooling type</mat-label>
+            <mat-select formControlName="coolingType">
+              <mat-option *ngFor="let type of coolingTypes" [value]="type">
+                {{ type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field appearance="fill" class="field" color="primary">
+            <mat-label>Annual heating need</mat-label>
+            <input matInput type='number' formControlName="annualHeatingNeed" placeholder="Annual heating need" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="field" color="primary">
+            <mat-label>CO2 emission</mat-label>
+            <input matInput type='number' formControlName="CO2Emission" placeholder="CO2 emission" />
+        </mat-form-field>
+
+
+        
+        <mat-form-field class="field">
+            <mat-label>Energy class</mat-label>
+            <mat-select formControlName="energyClass">
+              <mat-option *ngFor="let energyClass of energyClasses" [value]="energyClass">
+                {{ energyClass }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+
+        <div>
+          <button mat-button color="basic" style="float: right" type="button" matStepperNext>
+            Next
+          </button>
+          <button mat-button color="basic" style="float: left" type="button" matStepperPrevious>
+            Back
+          </button>
+        </div>
+        </form>
+      </mat-step>
+
+   
+
+      <mat-step>
+        <ng-template matStepLabel>Your passport is done!</ng-template>
+        <div style="margin: 30px">
+          <h2 style="text-align: center">Your passport is ready!</h2>
+          <div>
+            <button mat-button color="basic" style="float: left; margin-bottom: 20px" type="button" matStepperPrevious>
+              Back
+            </button>
+            <button mat-raised-button color="primary" style="float: right; margin-bottom: 20px" type="submit"
+              (click)="savePassport()" [disabled]="isGuest">
+              Save
+            </button>
+          </div>
+        </div>
+      </mat-step>
+
+    </mat-stepper>
+  </div>
+</div>

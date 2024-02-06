@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -72,6 +73,8 @@ import { AddAndEditPassportComponent } from './add-and-edit-passport/add-and-edi
     MatDividerModule,
     HttpClientModule,
     MatSelectModule,
+    MatStepperModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
