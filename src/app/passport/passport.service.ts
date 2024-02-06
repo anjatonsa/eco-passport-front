@@ -46,7 +46,7 @@ export class PassportService {
     ).subscribe((email) => {
       this.userEmail = email;
     });
-    return this.http.post(url + `/passport?userEmail=${this.userEmail}`, { passportDto: passport }, { observe: 'response' });
+    return this.http.post(url + `/passport/${this.userEmail}`,  passport , { observe: 'response' });
   }
 
   deletePassport(_id: string): Observable<HttpResponse<any>> {
@@ -54,7 +54,7 @@ export class PassportService {
   }
 
   updatePassport(passport: PassportDto, _id:string): Observable<HttpResponse<any>> {
-    return this.http.put(url + `/passport/${_id}`, { passportDto: passport }, { observe: 'response' });
+    return this.http.put(url + `/passport/${_id}`,  passport , { observe: 'response' });
   }
 
 

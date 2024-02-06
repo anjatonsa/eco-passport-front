@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { AuthState } from '../store/user.reducer';
 import { Router } from '@angular/router';
+import { deletePassport } from '../store/passport.actions';
 
 @Component({
   selector: 'app-display-passport',
@@ -28,7 +29,7 @@ export class DisplayPassportComponent {
     this.store.select((state)=>state.auth).subscribe((authState:AuthState)=>{
       if(authState.user){
 
-        if(this.passport?.owner._id ===authState.user._id){
+        if(this.passport?.owner._id === authState.user._id){
           this.isMine=true;
         }
       }
@@ -39,7 +40,7 @@ export class DisplayPassportComponent {
     let energySourcesString:string="Energy sources: ";
     if(this.passport){
       for(let i=0;i<this.passport.energySources.length;i++){
-        energySourcesString+=this.passport.energySources[i]+` (${this.passport.energySources[i]})`;
+        energySourcesString+=this.passport.energySources[i];
         if(i<this.passport.energySources.length-1){
           energySourcesString+=", ";
         }
@@ -53,6 +54,7 @@ export class DisplayPassportComponent {
   }
 
   deletePassport(){
-
+    if(this.passport)
+    this.store.dispatch(deletePassport({_id:this.passport._id}));
   }
 }

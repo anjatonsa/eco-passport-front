@@ -8,6 +8,7 @@ import { PassportDto } from '../dtos/passport.dto';
 import { User } from '../entities/user';
 import { selectIsAuth, selectUserData } from '../store/user.selector';
 import {buildingCategories,energyClasses,heatingTypes,energySources,ventilationOptions,hotWaterOptions,coolingTypes} from '../env.vars';
+import { createPassport, updatePassport } from '../store/passport.actions';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class AddAndEditPassportComponent {
 
   passportNew:PassportDto=new PassportDto("","","","",0,"",0,"","",[],"","","",0,0);
   passportEdit:PassportDto|null=null;
+  passportEditId:string|null=null;
   owner:User|null=null;
   isGuest:boolean=false;
   altcritFormGroup!: FormGroup;
@@ -85,9 +87,9 @@ export class AddAndEditPassportComponent {
           passport['coolingType'],
           passport['totalFloors'],
           passport['CO2Emission']
-        );     
+        );    
+        this.passportEditId=passport['_id'] ;
         
-        console.log(this.passportEdit,"pass edit");
         this.setPassportParameters();
        
       }
@@ -126,8 +128,8 @@ export class AddAndEditPassportComponent {
       this.altcritFormGroup3.patchValue({
         heatingType: this.passportEdit?.heatingType,
         energySources: this.passportEdit?.energySources,
-        ventilationOption: this.passportEdit?.ventilation,
-        hotWaterOption: this.passportEdit?.hotWater,
+        ventilation: this.passportEdit?.ventilation,
+        hotWater: this.passportEdit?.hotWater,
         coolingType: this.passportEdit?.coolingType,
         annualHeatingNeed: this.passportEdit?.annualHeatingNeed,
         CO2Emission: this.passportEdit?.CO2Emission,
@@ -138,11 +140,20 @@ export class AddAndEditPassportComponent {
   savePassport()
   {
     this.passportNew = new PassportDto(this.altcritFormGroup2.value.buildingCategory,this.altcritFormGroup.value.address, this.altcritFormGroup.value.city,
-      this.altcritFormGroup.value.constructionYear,this.altcritFormGroup.value.area, this.altcritFormGroup3.value.energyClass,this.altcritFormGroup3.value.annualHeatingNeed,
+      this.altcritFormGroup2.value.constructionYear,this.altcritFormGroup2.value.area, this.altcritFormGroup3.value.energyClass,this.altcritFormGroup3.value.annualHeatingNeed,
       this.altcritFormGroup.value.description, this.altcritFormGroup3.value.heatingType,this.altcritFormGroup3.value.energySources, this.altcritFormGroup3.value.ventilation,
       this.altcritFormGroup3.value.hotWater,this.altcritFormGroup3.value.coolingType, this.altcritFormGroup2.value.totalFloors,this.altcritFormGroup3.value.CO2Emission
       );
-    console.log("pasportNew, ",this.passportNew, " user id", this.owner?._id);
+    
+    if(this.passportEdit === null)
+    {
+      this.store.dispatch(createPassport({passport:this.passportNew}));
+    }
+    else{
+      if(this.passportEditId!=null)
+      this.store.dispatch(updatePassport({passport:this.passportNew, _id:this.passportEditId}))
+    }
+    this.router.navigate(['/my-passports']);
   }
   discardPassport(){
     this.router.navigate(['/my-passports']);
