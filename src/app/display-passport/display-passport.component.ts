@@ -49,7 +49,7 @@ export class DisplayPassportComponent {
   }
 
   editPassport(){
-    this.router.navigate(['/add-and-edit-passport']);
+    this.router.navigate(['/add-and-edit-passport'], {queryParams: this.passport});
   }
 
   deletePassport(){

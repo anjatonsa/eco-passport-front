@@ -98,7 +98,7 @@
           
           <mat-form-field class="field">
             <mat-label>Ventilation option</mat-label>
-            <mat-select formControlName="ventilationOption">
+            <mat-select formControlName="ventilation">
               <mat-option *ngFor="let option of ventilationOptions" [value]="option">
                 {{ option }}
               </mat-option>
@@ -107,7 +107,7 @@
           
           <mat-form-field class="field">
             <mat-label>Hot water option</mat-label>
-            <mat-select formControlName="hotWaterOption">
+            <mat-select formControlName="hotWater">
               <mat-option *ngFor="let option of hotWaterOptions" [value]="option">
                 {{ option }}
               </mat-option>
