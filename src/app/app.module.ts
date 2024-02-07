@@ -29,6 +29,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 import { UserEffects } from './store/user.effects';
 import { authReducer } from './store/user.reducer';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,6 +37,7 @@ import { myPassportsReducer, searchedPassportsReducer } from './store/passport.r
 import { PassportEffects } from './store/passport.effects';
 import { DisplayPassportComponent } from './display-passport/display-passport.component';
 import { AddAndEditPassportComponent } from './add-and-edit-passport/add-and-edit-passport.component';
+import { SuggestionViewComponent } from './suggestion-view/suggestion-view.component';
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { AddAndEditPassportComponent } from './add-and-edit-passport/add-and-edi
     PassportViewComponent,
     CityStatisticsComponent,
     DisplayPassportComponent,
-    AddAndEditPassportComponent
+    AddAndEditPassportComponent,
+    SuggestionViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,7 @@ import { AddAndEditPassportComponent } from './add-and-edit-passport/add-and-edi
     HttpClientModule,
     MatSelectModule,
     MatStepperModule,
-
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,8 @@ import { AppState } from '../app.state';
 import { AuthState } from '../store/user.reducer';
 import { Router } from '@angular/router';
 import { deletePassport } from '../store/passport.actions';
+import { SuggestionViewComponent } from '../suggestion-view/suggestion-view.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-display-passport',
@@ -18,7 +20,7 @@ export class DisplayPassportComponent {
   isMine:boolean=false;
 
 
-  constructor(private router:Router, private store: Store<AppState>) { }
+  constructor(private router:Router, private store: Store<AppState>,public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -56,5 +58,13 @@ export class DisplayPassportComponent {
   deletePassport(){
     if(this.passport)
     this.store.dispatch(deletePassport({_id:this.passport._id}));
+  }
+
+  getSuggestion(){
+
+    const currentEnergyClass=this.passport?.energyClass;
+    this.dialog.open(SuggestionViewComponent,{
+      data: currentEnergyClass
+    });
   }
 }
