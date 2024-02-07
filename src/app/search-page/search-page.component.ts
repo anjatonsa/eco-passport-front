@@ -35,8 +35,8 @@ export class SearchPageComponent {
     buildingCategory: [''],
     heatingType: [''],
     energySource: [''],
-    ventilationOption: [''],
-    hotWaterOption: [''],
+    ventilation: [''],
+    hotWater: [''],
     coolingType: [''],
     energyClass: [''],
     });
@@ -59,8 +59,8 @@ export class SearchPageComponent {
     this.searchForm.get('buildingCategory')?.setValue('');
     this.searchForm.get('heatingType')?.setValue('');
     this.searchForm.get('energySource')?.setValue('');
-    this.searchForm.get('ventilationOption')?.setValue('');
-    this.searchForm.get('hotWaterOption')?.setValue('');
+    this.searchForm.get('ventilation')?.setValue('');
+    this.searchForm.get('hotWater')?.setValue('');
     this.searchForm.get('coolingType')?.setValue('');
     this.searchForm.get('energyClass')?.setValue('');
   }
