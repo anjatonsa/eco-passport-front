@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { PassportService } from "../passport/passport.service";
 import { Router } from "@angular/router";
-import { createPassport, deletePassport, loadMyPassports, loadMyPassportsSuccess, loadSearchedPassports, loadSearchedPassportsSuccess, updatePassport } from "./passport.actions";
+import { createPassport, deletePassport, loadCityStatistic, loadCityStatisticSuccess, loadMyPassports, loadMyPassportsSuccess, loadSearchedPassports, loadSearchedPassportsSuccess, updatePassport } from "./passport.actions";
 import { exhaustMap, map, mergeMap, switchMap } from "rxjs";
 
 @Injectable()
@@ -74,6 +74,20 @@ export class PassportEffects {
                         this.router.navigateByUrl("/my-passports");
                         return loadMyPassports();
                     })
+                );
+            })
+        );
+    },);
+
+    loadCityStatistic$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(loadCityStatistic),
+            switchMap((action) => {
+                return this.passportService.getCityStatistic(action.city).pipe(
+                    map((statistic) => { 
+                         console.log("form effect", statistic.body);
+                        
+                        return loadCityStatisticSuccess({ statistic: statistic.body }) }),
                 );
             })
         );

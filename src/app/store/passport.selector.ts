@@ -25,3 +25,13 @@ export const selectMyPassports=createSelector(
     .filter(passport => passport !== undefined)
     .map(passport => <Passport>passport)
 );
+
+export const selectCityStatisticFeature=createSelector(
+    (state: AppState) => state.cityStatistic,
+    (cityStatistic) => cityStatistic
+);
+
+export const selectCityStatistic=createSelector(
+    selectCityStatisticFeature,
+    (state) => state
+);

@@ -51,3 +51,13 @@ export const updatePassport = createAction(
 export const updatePassportSuccess = createAction(
     '[Passports] Update Passport Success',
 );
+
+export const loadCityStatistic = createAction(
+    '[CityStatistic] Load City Statistic',
+    props<{city:string}>()
+)
+
+export const loadCityStatisticSuccess = createAction(
+    '[CityStatistic] Load City Statistic Success',
+    props<{statistic:any}>()
+)

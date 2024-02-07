@@ -56,5 +56,9 @@ export class PassportService {
     return this.http.put(url + `/passport/${_id}`,  passport , { observe: 'response' });
   }
 
+  getCityStatistic(city:string):Observable<HttpResponse<any>>{
+    return this.http.get(url + `/passport/citystatistic/${city}`, {observe: 'response' });
+  }
+
 
 }

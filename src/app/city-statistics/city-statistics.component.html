@@ -1,1 +1,38 @@
 <app-nav></app-nav>
+<div>
+    <hr class="line">
+    <h1 class="headline">Statistic for cities</h1>
+    <hr class="line">
+
+    <div class="searchArea">
+
+        <mat-form-field appearance="fill" class="field" color="primary">
+            <mat-label>City</mat-label>
+            <input matInput type="text" [(ngModel)]="city" #searchAlternativeNameInput="ngModel" />
+        </mat-form-field>
+
+        <button mat-icon-button class="example-icon" color="primary" (click)="search()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+
+    <div *ngIf="!searched">
+        <h2 class="headline">You have not searched anything yet or there is no statistic for the searched city.</h2>
+    </div>
+
+    <div  *ngIf="searched">
+        <div *ngFor="let city of citystatistic">
+            <div class="city">
+                <div class="city-details">
+                <div class="city-row">
+                    <span class="city-label">Energy class:</span>
+                    <span>{{ city._id }}</span>
+                </div>
+                <div class="city-row">
+                    <span class="city-label">Average annual heating need:</span>
+                    <span>{{ city.averageAnnualHeatingNeed }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

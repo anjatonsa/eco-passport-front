@@ -33,7 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UserEffects } from './store/user.effects';
 import { authReducer } from './store/user.reducer';
 import { HttpClientModule } from '@angular/common/http';
-import { myPassportsReducer, searchedPassportsReducer } from './store/passport.reducer';
+import { cityStatisticReducer, myPassportsReducer, searchedPassportsReducer } from './store/passport.reducer';
 import { PassportEffects } from './store/passport.effects';
 import { DisplayPassportComponent } from './display-passport/display-passport.component';
 import { AddAndEditPassportComponent } from './add-and-edit-passport/add-and-edit-passport.component';
@@ -61,7 +61,7 @@ import { SuggestionEffects } from './store/suggestion.effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot<AppState>({auth:authReducer, myPassports:myPassportsReducer, searchedPassports:searchedPassportsReducer, suggestion:suggestionReducer}, {}),
+    StoreModule.forRoot<AppState>({auth:authReducer, myPassports:myPassportsReducer, searchedPassports:searchedPassportsReducer, suggestion:suggestionReducer, cityStatistic:cityStatisticReducer}, {}),
     EffectsModule.forRoot([UserEffects,PassportEffects,SuggestionEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule,

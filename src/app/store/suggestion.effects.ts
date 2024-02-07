@@ -18,7 +18,6 @@ export class SuggestionEffects {
               exhaustMap((action) => {
                 return this.suggestionService.getSuggestion(action.passportId).pipe(
                     map((suggestion) => {
-                        console.log("iz effecta", suggestion);
                         return loadSuggestionSuccess({ suggestion: suggestion.body });
                     })
                 );

@@ -1,4 +1,4 @@
-import { MyPassportsState, SearchPassportsState } from "./store/passport.reducer";
+import { CityStatisticState, MyPassportsState, SearchPassportsState } from "./store/passport.reducer";
 import { SuggestionState } from "./store/suggestion.reducer";
 import { AuthState } from "./store/user.reducer";
 
@@ -8,4 +8,5 @@ export interface AppState {
     searchedPassports: SearchPassportsState;
     myPassports: MyPassportsState;
     suggestion:SuggestionState;
+    cityStatistic:CityStatisticState;
 }

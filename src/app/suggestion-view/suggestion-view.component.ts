@@ -37,11 +37,6 @@ export class SuggestionViewComponent {
         this.suggestion+=suggestionEntity?.energySources + " as energy soruces, ";
         this.suggestion+="in order to go up to energy class " + suggestionEntity?.energyClass;
       });
-      
-        if(suggestion.entities[0]?.coolingType!="")
-        {
-          console.log("for ocloooing",suggestion.entities[1]?.coolingType );
-        }
       }
     });
   }
