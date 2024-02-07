@@ -145,14 +145,11 @@ export class AddAndEditPassportComponent {
       this.altcritFormGroup3.value.hotWater,this.altcritFormGroup3.value.coolingType, this.altcritFormGroup2.value.totalFloors,this.altcritFormGroup3.value.CO2Emission
       );
     
-    if(this.passportEdit !== undefined)
-    {
+      if(this.passportEditId===null)
       this.store.dispatch(createPassport({passport:this.passportNew}));
-    }
-    else{
-      if(this.passportEditId!=null)
+      else
       this.store.dispatch(updatePassport({passport:this.passportNew, _id:this.passportEditId}))
-    }
+
     this.router.navigate(['/my-passports']);
   }
   discardPassport(){

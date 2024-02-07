@@ -38,6 +38,8 @@ import { PassportEffects } from './store/passport.effects';
 import { DisplayPassportComponent } from './display-passport/display-passport.component';
 import { AddAndEditPassportComponent } from './add-and-edit-passport/add-and-edit-passport.component';
 import { SuggestionViewComponent } from './suggestion-view/suggestion-view.component';
+import { suggestionReducer } from './store/suggestion.reducer';
+import { SuggestionEffects } from './store/suggestion.effects';
 
 
 @NgModule({
@@ -59,8 +61,8 @@ import { SuggestionViewComponent } from './suggestion-view/suggestion-view.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot<AppState>({auth:authReducer, myPassports:myPassportsReducer, searchedPassports:searchedPassportsReducer}, {}),
-    EffectsModule.forRoot([UserEffects,PassportEffects]),
+    StoreModule.forRoot<AppState>({auth:authReducer, myPassports:myPassportsReducer, searchedPassports:searchedPassportsReducer, suggestion:suggestionReducer}, {}),
+    EffectsModule.forRoot([UserEffects,PassportEffects,SuggestionEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     BrowserAnimationsModule,
     FormsModule,

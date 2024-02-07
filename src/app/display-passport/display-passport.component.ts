@@ -62,9 +62,8 @@ export class DisplayPassportComponent {
 
   getSuggestion(){
 
-    const currentEnergyClass=this.passport?.energyClass;
     this.dialog.open(SuggestionViewComponent,{
-      data: currentEnergyClass
+      data: this.passport?._id
     });
   }
 }
