@@ -26,7 +26,7 @@ export class AddAndEditPassportComponent {
   hotWaterOptions = hotWaterOptions;
   coolingTypes = coolingTypes;
 
-  passportNew:PassportDto=new PassportDto("","","","",0,"",0,"","",[],"","","",0,0);
+  passportNew:PassportDto=new PassportDto("","","","",0,"",0,"","",[],"","","",0,0,true);
   passportEdit:PassportDto|null=null;
   passportEditId:string|null=null;
   owner:User|null=null;
@@ -48,7 +48,7 @@ export class AddAndEditPassportComponent {
       address: ['', Validators.required],
       description: ['', Validators.required],
       city: ['', Validators.required],  
-
+      isPrivate: [true, Validators.required]
     });
     this.altcritFormGroup2=this._formBuilder.group({
       buildingCategory: ['', Validators.required],
@@ -86,7 +86,8 @@ export class AddAndEditPassportComponent {
           passport['hotWater'],
           passport['coolingType'],
           passport['totalFloors'],
-          passport['CO2Emission']
+          passport['CO2Emission'],
+          passport['isPrivate']
         );    
         this.passportEditId=passport['_id'] ;
         console.log("ulazi ovde kad se prosledjuje preko rute")
@@ -116,7 +117,8 @@ export class AddAndEditPassportComponent {
       this.altcritFormGroup.patchValue({
         address: this.passportEdit?.address,
         description: this.passportEdit?.description,
-        city: this.passportEdit?.city
+        city: this.passportEdit?.city,
+        isPrivate: this.passportEdit?.isPrivate
       });
 
       this.altcritFormGroup2.patchValue({
@@ -144,7 +146,7 @@ export class AddAndEditPassportComponent {
       this.altcritFormGroup2.value.constructionYear,this.altcritFormGroup2.value.area, this.altcritFormGroup3.value.energyClass,this.altcritFormGroup3.value.annualHeatingNeed,
       this.altcritFormGroup.value.description, this.altcritFormGroup3.value.heatingType,this.altcritFormGroup3.value.energySources, this.altcritFormGroup3.value.ventilation,
       this.altcritFormGroup3.value.hotWater,this.altcritFormGroup3.value.coolingType, this.altcritFormGroup2.value.totalFloors,this.altcritFormGroup3.value.CO2Emission
-      );
+      ,this.altcritFormGroup.value.isPrivate);
     
       if(this.passportEditId===null || this.passportEditId===undefined || this.passportEditId==="")
       this.store.dispatch(createPassport({passport:this.passportNew}));
@@ -155,6 +157,10 @@ export class AddAndEditPassportComponent {
   }
   discardPassport(){
     this.router.navigate(['/my-passports']);
+  }
+
+  updateIsPrivate(event: any) {
+    this.altcritFormGroup.get('isPrivate')!.setValue(event.checked);
   }
 
 

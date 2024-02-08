@@ -25,6 +25,8 @@
             <textarea matInput formControlName="description" placeholder="Description"></textarea>
           </mat-form-field>
 
+          <mat-checkbox color="primary" class="example-margin" (change)="updateIsPrivate($event)" [checked]="altcritFormGroup.get('isPrivate')!.value">Private Passport (visible only to you)</mat-checkbox>
+
           <div>
             <button mat-button color="primary" style="float: right" type="button" matStepperNext>
               Next

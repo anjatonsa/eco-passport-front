@@ -26,7 +26,7 @@ export class SearchPageComponent {
   coolingTypes = coolingTypes;
 
   
-  searchParams:PassportDto = new PassportDto("","","","",0,"",0,"","",[],"","","",0,0);
+  searchParams:PassportDto = new PassportDto("","","","",0,"",0,"","",[],"","","",0,0,true);
   searchForm: FormGroup;
 
   constructor(private store:Store<AppState>,private formBuilder: FormBuilder) { 
@@ -54,7 +54,7 @@ export class SearchPageComponent {
    this.searchParams = { ...this.searchParams, ...this.searchForm.value };
    console.log(this.searchParams);
    this.store.dispatch(loadSearchedPassports({search:this.searchParams}));
-   this.searchParams=new PassportDto("","","","",0,"",0,"","",[],"","","",0,0);
+   this.searchParams=new PassportDto("","","","",0,"",0,"","",[],"","","",0,0,true);
    if (this.searchForm) {
     this.searchForm.get('buildingCategory')?.setValue('');
     this.searchForm.get('heatingType')?.setValue('');

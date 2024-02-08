@@ -15,6 +15,7 @@ export class PassportDto{
     coolingType: string;
     totalFloors: number;
     CO2Emission: number;
+    isPrivate: boolean;
 
     constructor(
         buildingCategory: string,
@@ -31,7 +32,8 @@ export class PassportDto{
         hotWater: string,
         coolingType: string,
         totalFloors: number,
-        CO2Emission: number
+        CO2Emission: number,
+        isPrivate: boolean
     ){
         this.buildingCategory = buildingCategory;
         this.address = address;
@@ -48,6 +50,7 @@ export class PassportDto{
         this.coolingType = coolingType;
         this.totalFloors = totalFloors;
         this.CO2Emission = CO2Emission;
+        this.isPrivate = isPrivate;
     }
     
 }

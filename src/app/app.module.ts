@@ -40,6 +40,7 @@ import { AddAndEditPassportComponent } from './add-and-edit-passport/add-and-edi
 import { SuggestionViewComponent } from './suggestion-view/suggestion-view.component';
 import { suggestionReducer } from './store/suggestion.reducer';
 import { SuggestionEffects } from './store/suggestion.effects';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { SuggestionEffects } from './store/suggestion.effects';
     HttpClientModule,
     MatSelectModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

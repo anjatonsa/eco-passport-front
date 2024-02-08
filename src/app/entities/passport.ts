@@ -18,8 +18,9 @@ export class Passport{
     coolingType: string;
     totalFloors: number;
     CO2Emission: number;
+    isPrivate: boolean;
 
-    [key: string]: string | number | User | string[]; // Index signature to allow any string key with specific value types
+    [key: string]: string | number | User | string[] |boolean; // Index signature to allow any string key with specific value types
 
 
     constructor(
@@ -39,8 +40,8 @@ export class Passport{
         hotWater: string,
         coolingType: string,
         totalFloors: number,
-        CO2Emission: number
-        
+        CO2Emission: number,
+        isPrivate: boolean
     ){
         this._id = _id;
         this.buildingCategory = buildingCategory;
@@ -59,6 +60,7 @@ export class Passport{
         this.coolingType = coolingType;
         this.totalFloors = totalFloors;
         this.CO2Emission = CO2Emission;
+        this.isPrivate = isPrivate;
     }
     
 }
