@@ -51,6 +51,20 @@
 
  .controls{
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+ }
+
+ .shower{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+
+ }
+
+ .ctrlb{
+  margin: 20px;
+  padding: 10px;
  }

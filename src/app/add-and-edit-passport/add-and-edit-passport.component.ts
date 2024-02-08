@@ -89,6 +89,7 @@ export class AddAndEditPassportComponent {
           passport['CO2Emission']
         );    
         this.passportEditId=passport['_id'] ;
+        console.log("ulazi ovde kad se prosledjuje preko rute")
         
         this.setPassportParameters();
        
@@ -145,7 +146,7 @@ export class AddAndEditPassportComponent {
       this.altcritFormGroup3.value.hotWater,this.altcritFormGroup3.value.coolingType, this.altcritFormGroup2.value.totalFloors,this.altcritFormGroup3.value.CO2Emission
       );
     
-      if(this.passportEditId===null)
+      if(this.passportEditId===null || this.passportEditId===undefined || this.passportEditId==="")
       this.store.dispatch(createPassport({passport:this.passportNew}));
       else
       this.store.dispatch(updatePassport({passport:this.passportNew, _id:this.passportEditId}))

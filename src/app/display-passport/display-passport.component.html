@@ -1,76 +1,29 @@
 <mat-card class="example-card">
     <mat-card-header class="mat-card-header">
-      <mat-card-title class="mat-card-title">{{ passport?.address +", "+ passport?.city }}</mat-card-title>
-      
+      <mat-card-title class="mat-card-title">Passport</mat-card-title>
+      <mat-card-subtitle class="mat-card-subtitle">{{passport?.owner!.name+" "+passport?.owner?.surname+" ("+passport?.owner?.email+")"}}</mat-card-subtitle>
+         
     </mat-card-header>
-
     <mat-card-content class="mat-card-content">
-
-      <p>
-            {{ passport?.energyClass }}
-      </p>
-      
-      <p>
-        {{passport?.description}}
-      </p>
-
-      <p>
-        {{passport?.buildingCategory}}
-      </p>
-
-      <p>
-        {{passport?.constructionYear}}
-      </p>
-
-      <p>
-        {{passport?.area}}
-      </p>
-
-      <p>
-        {{passport?.annualHeatingNeed}}
-      </p>
-
-      <p>
-        {{passport?.heatingType}}
-      </p>
-
-      <p>
-        {{energySourcesString}}
-      </p>
-
-      <p>
-        {{passport?.ventilation}}
-      </p>
-  
-      <p>
-        {{passport?.hotWater}}
-      </p>
-  
-      <p>
-        {{passport?.coolingType}}
-      </p>
-  
-      <p>
-        {{passport?.totalFloors}}
-      </p>
-  
-      <p>
-        {{passport?.CO2Emission}}
-      </p>
-  
+      <div *ngIf="passport && getObjectKeys(passport).length > 0">
+        <div *ngFor="let key of getObjectKeys(passport)">
+          <div class="shower" *ngIf="passport[key] !== null && passport[key] !== '' && key!=='owner' && key!=='_id' && key!=='__v'">
+            <div>{{ camelCaseToTitleCase(key) }}:</div>
+            <div>{{ passport[key] }}</div>
+          </div>
+        </div>
+      </div>
     </mat-card-content>
   
     <mat-card-actions>
       <div *ngIf="isMine" class="controls">
-        <button mat-raised-button color="primary" (click)="editPassport()">
+        <button mat-raised-button color="primary" class="ctrlb" (click)="editPassport()">
           Edit
         </button>
-        <button mat-raised-button color="primary" (click)="deletePassport()">
+        <button mat-raised-button color="primary" class="ctrlb" (click)="deletePassport()">
           Delete
         </button>
-
-
-        <button mat-raised-button color="primary" (click)="getSuggestion()">
+        <button mat-raised-button color="primary" class="ctrlb" (click)="getSuggestion()">
           Get suggestion 
         </button>
 

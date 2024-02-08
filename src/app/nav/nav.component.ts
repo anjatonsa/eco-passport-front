@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
+import { logout } from '../store/user.actions';
+import { emptySearch } from '../store/passport.actions';
 
 @Component({
   selector: 'app-nav',
@@ -31,8 +33,8 @@ export class NavComponent {
   }
 
   signOut() {
-    // this.store.dispatch(logout());
-    // this.store.dispatch(emptySearch());
+    this.store.dispatch(logout());
+    this.store.dispatch(emptySearch());
 
     this.router.navigate(['/sign-in']);
   }
