@@ -9,9 +9,9 @@
   <div class="main-div">
     <mat-stepper orientation="vertical" [linear]="true" #stepper>
       
-      <mat-step [stepControl]="altcritFormGroup">
+      <mat-step [stepControl]="firstFormGroup">
         <ng-template matStepLabel>Passport info</ng-template>
-        <form [formGroup]="altcritFormGroup">
+        <form [formGroup]="firstFormGroup">
 
           <mat-form-field appearance="fill" class="field">
             <input matInput formControlName="address" placeholder="Address" />
@@ -25,7 +25,7 @@
             <textarea matInput formControlName="description" placeholder="Description"></textarea>
           </mat-form-field>
 
-          <mat-checkbox color="primary" class="example-margin" (change)="updateIsPrivate($event)" [checked]="altcritFormGroup.get('isPrivate')!.value">Private Passport (visible only to you)</mat-checkbox>
+          <mat-checkbox color="primary" class="example-margin" (change)="updateIsPrivate($event)" [checked]="firstFormGroup.get('isPrivate')!.value">Private Passport (visible only to you)</mat-checkbox>
 
           <div>
             <button mat-button color="primary" style="float: right" type="button" matStepperNext>
@@ -36,9 +36,9 @@
       </mat-step>
 
    
-      <mat-step [stepControl]="altcritFormGroup2">
+      <mat-step [stepControl]="secondFormGroup">
         <ng-template matStepLabel>Add general information about the building</ng-template>
-        <form [formGroup]="altcritFormGroup2">
+        <form [formGroup]="secondFormGroup">
         <mat-form-field class="field">
             <mat-label>Building category</mat-label>
             <mat-select formControlName="buildingCategory">
@@ -77,9 +77,9 @@
 
 
       
-      <mat-step [stepControl]="altcritFormGroup3">
+      <mat-step [stepControl]="thirdFormGroup">
         <ng-template matStepLabel>Add information about energy consumption</ng-template>
-        <form [formGroup]="altcritFormGroup3"> 
+        <form [formGroup]="thirdFormGroup"> 
         <mat-form-field class="field">
             <mat-label>Heating type</mat-label>
             <mat-select formControlName="heatingType">

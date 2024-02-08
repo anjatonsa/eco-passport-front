@@ -31,9 +31,9 @@ export class AddAndEditPassportComponent {
   passportEditId:string|null=null;
   owner:User|null=null;
   isGuest:boolean=false;
-  altcritFormGroup!: FormGroup;
-  altcritFormGroup2!:FormGroup;
-  altcritFormGroup3!:FormGroup;
+  firstFormGroup!: FormGroup;
+  secondFormGroup!:FormGroup;
+  thirdFormGroup!:FormGroup;
 
 
     constructor(private _formBuilder: FormBuilder,
@@ -44,20 +44,20 @@ export class AddAndEditPassportComponent {
   ngOnInit(){
 
     
-    this.altcritFormGroup = this._formBuilder.group({
+    this.firstFormGroup = this._formBuilder.group({
       address: ['', Validators.required],
       description: ['', Validators.required],
       city: ['', Validators.required],  
       isPrivate: [false]
     });
-    this.altcritFormGroup2=this._formBuilder.group({
+    this.secondFormGroup=this._formBuilder.group({
       buildingCategory: ['', Validators.required],
       constructionYear: [0, Validators.required],
       totalFloors: [0, Validators.required],
       area: [0, Validators.required],
     });
 
-    this.altcritFormGroup3=this._formBuilder.group({
+    this.thirdFormGroup=this._formBuilder.group({
       heatingType: ['', Validators.required],
       energySources: [[], Validators.required],
       ventilation: ['', Validators.required],
@@ -113,21 +113,21 @@ export class AddAndEditPassportComponent {
  
   setPassportParameters()
   {
-      this.altcritFormGroup.patchValue({
+      this.firstFormGroup.patchValue({
         address: this.passportEdit?.address,
         description: this.passportEdit?.description,
         city: this.passportEdit?.city,
         isPrivate: this.passportEdit?.isPrivate
       });
 
-      this.altcritFormGroup2.patchValue({
+      this.secondFormGroup.patchValue({
         buildingCategory:this.passportEdit?.buildingCategory,
         constructionYear: this.passportEdit?.constructionYear,
         totalFloors: this.passportEdit?.totalFloors,
         area: this.passportEdit?.area,
       });     
       
-      this.altcritFormGroup3.patchValue({
+      this.thirdFormGroup.patchValue({
         heatingType: this.passportEdit?.heatingType,
         energySources: this.passportEdit?.energySources,
         ventilation: this.passportEdit?.ventilation,
@@ -141,13 +141,13 @@ export class AddAndEditPassportComponent {
   }
   savePassport()
   {
-    if(this.altcritFormGroup.value.isPrivate===null || this.altcritFormGroup.value.isPrivate===undefined)
-    this.altcritFormGroup.get('isPrivate')!.setValue(false);
-    this.passportNew = new PassportDto(this.altcritFormGroup2.value.buildingCategory,this.altcritFormGroup.value.address, this.altcritFormGroup.value.city,
-      this.altcritFormGroup2.value.constructionYear,this.altcritFormGroup2.value.area, this.altcritFormGroup3.value.energyClass,this.altcritFormGroup3.value.annualHeatingNeed,
-      this.altcritFormGroup.value.description, this.altcritFormGroup3.value.heatingType,this.altcritFormGroup3.value.energySources, this.altcritFormGroup3.value.ventilation,
-      this.altcritFormGroup3.value.hotWater,this.altcritFormGroup3.value.coolingType, this.altcritFormGroup2.value.totalFloors,this.altcritFormGroup3.value.CO2Emission
-      ,this.altcritFormGroup.value.isPrivate);
+    if(this.firstFormGroup.value.isPrivate===null || this.firstFormGroup.value.isPrivate===undefined)
+    this.firstFormGroup.get('isPrivate')!.setValue(false);
+    this.passportNew = new PassportDto(this.secondFormGroup.value.buildingCategory,this.firstFormGroup.value.address, this.firstFormGroup.value.city,
+      this.secondFormGroup.value.constructionYear,this.secondFormGroup.value.area, this.thirdFormGroup.value.energyClass,this.thirdFormGroup.value.annualHeatingNeed,
+      this.firstFormGroup.value.description, this.thirdFormGroup.value.heatingType,this.thirdFormGroup.value.energySources, this.thirdFormGroup.value.ventilation,
+      this.thirdFormGroup.value.hotWater,this.thirdFormGroup.value.coolingType, this.secondFormGroup.value.totalFloors,this.thirdFormGroup.value.CO2Emission
+      ,this.firstFormGroup.value.isPrivate);
     
       if(this.passportEditId===null || this.passportEditId===undefined || this.passportEditId==="")
       this.store.dispatch(createPassport({passport:this.passportNew}));
@@ -161,7 +161,7 @@ export class AddAndEditPassportComponent {
   }
 
   updateIsPrivate(event: any) {
-    this.altcritFormGroup.get('isPrivate')!.setValue(event.checked);
+    this.firstFormGroup.get('isPrivate')!.setValue(event.checked);
   }
 
 
