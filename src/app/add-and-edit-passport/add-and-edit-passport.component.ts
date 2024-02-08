@@ -48,7 +48,7 @@ export class AddAndEditPassportComponent {
       address: ['', Validators.required],
       description: ['', Validators.required],
       city: ['', Validators.required],  
-      isPrivate: [true, Validators.required]
+      isPrivate: [false]
     });
     this.altcritFormGroup2=this._formBuilder.group({
       buildingCategory: ['', Validators.required],
@@ -88,9 +88,8 @@ export class AddAndEditPassportComponent {
           passport['totalFloors'],
           passport['CO2Emission'],
           passport['isPrivate']
-        );    
+        );  
         this.passportEditId=passport['_id'] ;
-        console.log("ulazi ovde kad se prosledjuje preko rute")
         
         this.setPassportParameters();
        
@@ -142,6 +141,8 @@ export class AddAndEditPassportComponent {
   }
   savePassport()
   {
+    if(this.altcritFormGroup.value.isPrivate===null || this.altcritFormGroup.value.isPrivate===undefined)
+    this.altcritFormGroup.get('isPrivate')!.setValue(false);
     this.passportNew = new PassportDto(this.altcritFormGroup2.value.buildingCategory,this.altcritFormGroup.value.address, this.altcritFormGroup.value.city,
       this.altcritFormGroup2.value.constructionYear,this.altcritFormGroup2.value.area, this.altcritFormGroup3.value.energyClass,this.altcritFormGroup3.value.annualHeatingNeed,
       this.altcritFormGroup.value.description, this.altcritFormGroup3.value.heatingType,this.altcritFormGroup3.value.energySources, this.altcritFormGroup3.value.ventilation,

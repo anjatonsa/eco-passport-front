@@ -1,7 +1,7 @@
 import { ActionReducer, createReducer, on } from '@ngrx/store';
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { Suggestion } from '../entities/suggestion';
-import { loadSuggestionSuccess } from './suggestion.action';
+import { loadSuggestionSuccess, removeSuggestion } from './suggestion.action';
 
 export interface SuggestionState extends EntityState<Suggestion> {}
 
@@ -15,5 +15,8 @@ export const suggestionReducer: ActionReducer<SuggestionState, any> = createRedu
   initialSuggestionState,
   on(loadSuggestionSuccess, (state, { suggestion }) => {
     return adapterSuggestion.setOne(suggestion, state);
-  })
+  }),
+  on(removeSuggestion, (state) => {
+    return adapterSuggestion.removeAll(state);
+}),
 );

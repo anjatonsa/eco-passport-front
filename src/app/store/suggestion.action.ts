@@ -10,3 +10,7 @@ export const loadSuggestionSuccess = createAction(
     '[Suggestion] Load Suggestion Success',
     props<{ suggestion: Suggestion }>()
 );
+
+export const removeSuggestion = createAction(
+    '[Suggestion] Remove Suggestion',
+);

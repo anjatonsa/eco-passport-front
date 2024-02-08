@@ -85,8 +85,6 @@ export class PassportEffects {
             switchMap((action) => {
                 return this.passportService.getCityStatistic(action.city).pipe(
                     map((statistic) => { 
-                         console.log("form effect", statistic.body);
-                        
                         return loadCityStatisticSuccess({ statistic: statistic.body }) }),
                 );
             })
