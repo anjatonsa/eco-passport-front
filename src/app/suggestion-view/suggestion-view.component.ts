@@ -14,7 +14,7 @@ export class SuggestionViewComponent {
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: string,private store:Store<AppState>) {}
-  suggestion:string="You can try implementing: ";
+  suggestion:string="You can try implementing: \n";
 
   ngOnInit()
   {
@@ -30,11 +30,11 @@ export class SuggestionViewComponent {
         const suggestionEntity = suggestion.entities[id];
         console.log("Suggestion Entity:", suggestionEntity);
 
-        this.suggestion+=suggestionEntity?.coolingType + " for colling, or ";
-        this.suggestion+=suggestionEntity?.ventilation + " for ventilation, or ";
-        this.suggestion+=suggestionEntity?.hotWater + " for hot water, or ";
-        this.suggestion+=suggestionEntity?.heatingType + " for heating, or use: ";
-        this.suggestion+=suggestionEntity?.energySources + " as energy soruces, ";
+        this.suggestion+=suggestionEntity?.coolingType + " for colling, or \n";
+        this.suggestion+=suggestionEntity?.ventilation + " for ventilation, or \n";
+        this.suggestion+=suggestionEntity?.hotWater + " for hot water, or \n";
+        this.suggestion+=suggestionEntity?.heatingType + " for heating, or use: \n";
+        this.suggestion+=suggestionEntity?.energySources + " as energy soruces, \n";
         this.suggestion+="in order to go up to energy class " + suggestionEntity?.energyClass;
       });
       }

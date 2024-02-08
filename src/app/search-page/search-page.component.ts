@@ -34,7 +34,7 @@ export class SearchPageComponent {
    this.searchForm = this.formBuilder.group({
     buildingCategory: [''],
     heatingType: [''],
-    energySource: [''],
+    energySources: [[]],
     ventilation: [''],
     hotWater: [''],
     coolingType: [''],
@@ -58,7 +58,7 @@ export class SearchPageComponent {
    if (this.searchForm) {
     this.searchForm.get('buildingCategory')?.setValue('');
     this.searchForm.get('heatingType')?.setValue('');
-    this.searchForm.get('energySource')?.setValue('');
+    this.searchForm.get('energySources')?.setValue([]);
     this.searchForm.get('ventilation')?.setValue('');
     this.searchForm.get('hotWater')?.setValue('');
     this.searchForm.get('coolingType')?.setValue('');
