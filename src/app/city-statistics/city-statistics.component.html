@@ -20,19 +20,22 @@
         <h2 class="headline">You have not searched anything yet or there is no statistic for the searched city.</h2>
     </div>
 
-    <div  *ngIf="searched">
+    <div *ngIf="searched">
+        <h2 class="headline">{{city}}</h2>
+    </div>
+    <div *ngIf="searched">
         <div *ngFor="let city of citystatistic">
             <div class="city">
                 <div class="city-details">
-                <div class="city-row">
-                    <span class="city-label">Energy class:</span>
-                    <span>{{ city._id }}</span>
-                </div>
-                <div class="city-row">
-                    <span class="city-label">Average annual heating need:</span>
-                    <span>{{ city.averageAnnualHeatingNeed }}</span>
+                    <div class="city-row">
+                        <span class="city-label">Energy class:</span>
+                        <span>{{ city._id }}</span>
+                    </div>
+                    <div class="city-row">
+                        <span class="city-label">Average annual heating need:</span>
+                        <span>{{ city.averageAnnualHeatingNeed }}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

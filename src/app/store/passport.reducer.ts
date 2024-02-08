@@ -1,7 +1,7 @@
 import { EntityState, createEntityAdapter } from "@ngrx/entity";
 import { Passport } from "../entities/passport";
 import { createReducer, on } from "@ngrx/store";
-import { emptySearch, loadCityStatisticSuccess, loadMyPassportsSuccess, loadSearchedPassportsSuccess } from "./passport.actions";
+import { clearCityStatistic, emptySearch, loadCityStatisticSuccess, loadMyPassportsSuccess, loadSearchedPassportsSuccess } from "./passport.actions";
 
 
 export interface MyPassportsState extends EntityState<Passport> {
@@ -51,5 +51,8 @@ export const cityStatisticReducer = createReducer(
     initialCityStatisticState,
     on(loadCityStatisticSuccess, (state, { statistic }) => {
       return adapterCityStatistic.setAll(statistic, state);
-    })
+    }),
+    on(clearCityStatistic, (state) => {
+        return adapterCityStatistic.removeAll(state);
+    }),
   );

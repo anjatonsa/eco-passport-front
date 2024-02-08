@@ -33,5 +33,7 @@ export const selectCityStatisticFeature=createSelector(
 
 export const selectCityStatistic=createSelector(
     selectCityStatisticFeature,
-    (state) => state
+    (state) => state.ids.map(_id => state.entities[_id])
+    .filter(statistic => statistic !== undefined)
+    .map(statistic => <any>statistic)
 );

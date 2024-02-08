@@ -61,3 +61,6 @@ export const loadCityStatisticSuccess = createAction(
     '[CityStatistic] Load City Statistic Success',
     props<{statistic:any}>()
 )
+export const clearCityStatistic = createAction(
+    '[CityStatistic] Clear City Statistic',
+)
