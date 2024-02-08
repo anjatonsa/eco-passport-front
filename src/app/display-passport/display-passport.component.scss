@@ -5,8 +5,8 @@
    margin: 20px;
    background-color: hsl(0, 0%, 100%); 
    border-radius: 8px;
-   box-shadow: 0px 4px 10px #3f3c99; 
-   border: 1px solid #3f3c99;
+   box-shadow: 0px 4px 10px #14792f; 
+   border: 1px solid #14792f;
  }
  
  .mat-card-header {
@@ -67,4 +67,8 @@
  .ctrlb{
   margin: 20px;
   padding: 10px;
+ }
+
+ button{
+  color: white !important;
  }
